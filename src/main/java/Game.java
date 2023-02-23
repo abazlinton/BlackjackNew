@@ -50,7 +50,7 @@ public class Game {
         ArrayList<Card> hand = player.getHand();
         System.out.println(hand);
         System.out.println(BlackJackScorer.getScore(hand));
-        System.out.println(BlackJackScorer.getScoreType(player.getHand()));
+        System.out.println(BlackJackScorer.getScoreType(hand));
         System.out.println();
     }
 

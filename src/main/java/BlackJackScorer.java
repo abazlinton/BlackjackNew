@@ -59,14 +59,14 @@ public class BlackJackScorer {
     public static ArrayList<Player> getPlayersByHandValue(ArrayList<Player> players){
         ArrayList<Player> copyOfPlayers = new ArrayList<>(players);
         Collections.sort(copyOfPlayers, (p1, p2) -> {
-            BlackJackScorer.ScoreType p1ScoreType = BlackJackScorer.getScoreType(p1.getHand());
-            BlackJackScorer.ScoreType p2ScoreType = BlackJackScorer.getScoreType(p2.getHand());
+            ScoreType p1ScoreType = getScoreType(p1.getHand());
+            ScoreType p2ScoreType = getScoreType(p2.getHand());
             int sortOrder = p1ScoreType.compareTo(p2ScoreType);
             if (sortOrder != 0) {
                 return sortOrder;
             }
-            int p1Score = BlackJackScorer.getScore(p1.getHand());
-            int p2Score = BlackJackScorer.getScore(p2.getHand());
+            int p1Score = getScore(p1.getHand());
+            int p2Score = getScore(p2.getHand());
             return p2Score - p1Score;
         });
         return copyOfPlayers;
@@ -78,10 +78,10 @@ public class BlackJackScorer {
     }
 
     public static GameState getGameOutcome(ArrayList<Card> playerHand, ArrayList<Card> dealerHand){
-        BlackJackScorer.ScoreType playerScoreType = BlackJackScorer.getScoreType(playerHand);
-        BlackJackScorer.ScoreType dealerScoreType = BlackJackScorer.getScoreType(dealerHand);
-        Integer playerScore = BlackJackScorer.getScore(playerHand);
-        Integer dealerScore = BlackJackScorer.getScore(dealerHand);
+        ScoreType playerScoreType = getScoreType(playerHand);
+        ScoreType dealerScoreType = getScoreType(dealerHand);
+        int playerScore = getScore(playerHand);
+        int dealerScore = getScore(dealerHand);
         if (playerScoreType == ScoreType.BUST) {
             return GameState.LOSE;
         } else if (dealerScore == playerScore && dealerScoreType == playerScoreType) {
