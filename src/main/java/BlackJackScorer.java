@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class BlackJackScorer {
 
@@ -60,19 +59,19 @@ public class BlackJackScorer {
         return (BlackJackScorer.getScoreType(player.getHand()) == BlackJackScorer.ScoreType.UNDER_21);
     }
 
-    public static GameState getGameOutcome(ArrayList<Card> playerHand, ArrayList<Card> dealerHand){
+    public static GameOutcome getGameOutcome(ArrayList<Card> playerHand, ArrayList<Card> dealerHand){
         ScoreType playerScoreType = getScoreType(playerHand);
         ScoreType dealerScoreType = getScoreType(dealerHand);
         int playerScore = getScore(playerHand);
         int dealerScore = getScore(dealerHand);
         if (playerScoreType == ScoreType.BUST) {
-            return GameState.LOSE;
+            return GameOutcome.LOSE;
         } else if (dealerScore == playerScore && dealerScoreType == playerScoreType) {
-            return GameState.DRAW;
+            return GameOutcome.DRAW;
         } else if (playerScore > dealerScore || dealerScoreType == ScoreType.BUST) {
-            return GameState.WIN;
+            return GameOutcome.WIN;
         } else {
-            return GameState.LOSE;
+            return GameOutcome.LOSE;
         }
     }
 

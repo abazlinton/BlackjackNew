@@ -1,4 +1,4 @@
-public enum GameState {
+public enum GameOutcome {
     WIN,
     LOSE,
     DRAW
