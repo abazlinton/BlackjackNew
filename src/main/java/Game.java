@@ -55,12 +55,12 @@ public class Game {
     }
 
     public void printGameResult(){
-        this.players = BlackJackScorer.getPlayersByHandValue(this.players);
         for (Player player : this.players) {
             if (player == this.dealer) continue;
             System.out.print(player.getName() + " ");
-            System.out.print(BlackJackScorer.getGameOutcome(player.getHand(), dealer.getHand()));
             System.out.println( " - " + BlackJackScorer.getScore(player.getHand()));
+            System.out.print(BlackJackScorer.getGameOutcome(player.getHand(), dealer.getHand()));
+            System.out.println();
         }
 
         System.out.println("\n" + this.players);

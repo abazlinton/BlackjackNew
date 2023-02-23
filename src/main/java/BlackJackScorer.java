@@ -56,23 +56,6 @@ public class BlackJackScorer {
         return aceCount;
     }
 
-    public static ArrayList<Player> getPlayersByHandValue(ArrayList<Player> players){
-        ArrayList<Player> copyOfPlayers = new ArrayList<>(players);
-        Collections.sort(copyOfPlayers, (p1, p2) -> {
-            ScoreType p1ScoreType = getScoreType(p1.getHand());
-            ScoreType p2ScoreType = getScoreType(p2.getHand());
-            int sortOrder = p1ScoreType.compareTo(p2ScoreType);
-            if (sortOrder != 0) {
-                return sortOrder;
-            }
-            int p1Score = getScore(p1.getHand());
-            int p2Score = getScore(p2.getHand());
-            return p2Score - p1Score;
-        });
-        return copyOfPlayers;
-
-    }
-
     public static boolean getIsPlayerAbleToHit(Player player) {
         return (BlackJackScorer.getScoreType(player.getHand()) == BlackJackScorer.ScoreType.UNDER_21);
     }
